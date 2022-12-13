@@ -1,5 +1,7 @@
 package br.edu.infnet.sptboot_appemprestimo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +19,14 @@ public class SptbootAppemprestimoApplication {
 	
 	@Bean
 	public CommandLineRunner run(SolicitanteRepository repo) {
+//		return (args)-> {
+//			Solicitante sol = new Solicitante("José Bezerra", "rua x");
+//			repo.save(sol);
+//		};
+		
 		return (args)-> {
-			Solicitante sol = new Solicitante("José Bezerra", "rua x");
-			repo.save(sol);
+			List<Solicitante> sol = repo.findByNome("José Bezerra");
+			System.out.println(sol.size());
 		};
 	}
 	
